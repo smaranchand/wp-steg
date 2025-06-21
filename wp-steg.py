@@ -142,7 +142,7 @@ def pre_check(base: str) -> bool:
     checks = [
         ('Website Reachablity', check_website_up(base)),
         ('WordPress Detection', check_wordpress(base)),
-        ('WP-JSON API Availability', check_wp_json(base)),
+        ('WP REST API Availability', check_wp_json(base)),
         ('Directory Listing', check_directory_listing(upload))
     ]
     ok = True
@@ -252,7 +252,7 @@ def process_target(target, verbose=False):
         with open(filename, 'w') as f:
             for u in orphans:
                 f.write(u + '\n')
-        console.print("\n[bold]Orphaned URLs (showing up to 10):[/bold]")
+        console.print("\n[bold]Orphaned/Uncovered URLs (showing up to 10):[/bold]")
         for u in orphans[:10]:
             console.print(f" - {u}")
         console.print(f"\nFull list available at [magenta]{filename}[/magenta]")
