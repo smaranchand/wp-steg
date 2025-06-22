@@ -6,6 +6,8 @@ If a WordPress site runs on a single- or two-tier architecture without any Conte
 
 WP-STEG operates by using the WP REST API to retrieve a list of media files that are currently linked to published posts. It then compares this list with the actual files present in the uploads directory (retrieved via directory listing). Any files found in the directory but missing from the API response are flagged as orphaned and potential leaks.
 
+![](https://github.com/smaranchand/wp-steg/blob/main/illustration.svg)
+
 ---
 
 ## Features
@@ -15,12 +17,12 @@ WP-STEG operates by using the WP REST API to retrieve a list of media files that
 * Recursive crawl of `/wp-content/uploads/` for all accessible files.
 * Compares disk files to those referenced by the WP REST API.
 * Batch scan multiple sites or scan a single URL.
-* Prints clear summary and saves orphaned file list per target.
+* Prints a clear summary and saves the orphaned file list per target.
 * Verbose mode for full crawling details.
 
 ---
 
-## How It Works ?
+## How It Works?
 
 1. Checks site: Ensures target is WordPress, API is accessible, and directory listing is enabled.
 2. Fetches media from API: Collects all file URLs referenced by published posts.
@@ -58,44 +60,19 @@ Options:
 ---
 
 ## Example Output
-
-Precondition Checks:
-
-[✅OK] Website Reachablity<br>
-[✅OK] WordPress Detection<br>
-[✅OK] WP-JSON API Availability<br>
-[✅OK] Directory Listing<br>
-
-Orphaned/Uncovered URLs (showing up to 10):
-
-* [https://example.com/wp-content/uploads/2025/01/secret.pdf](https://example.com/wp-content/uploads/2025/01/secret.pdf)
-* [https://example.com/wp-content/uploads/2023/11/screen.png](https://example.com/wp-content/uploads/2023/11/screen.png)
-
-Full list available at WP\_STEG\_example\_com\_uncovered\_files.txt
-
-Audit Summary
-```
-+--------------------------+-------+
-| Metric                   | Count |
-+--------------------------+-------+
-| Files from API           |   28  |
-| Files from dir listing   |   35  |
-| Skipped non-media files  |    7  |
-| Orphaned/Uncovered files |   12  |
-+--------------------------+-------+
-```
+![working](https://github.com/smaranchand/wp-steg/blob/main/working.png)
 
 ---
 
 ## FAQ
 
-Q: What are “Orphaned” files?
+Q: What are “Orphaned” files?<br>
 A: Files in /wp-content/uploads/ not attached to any published post, often forgotten or left by drafts.
 
 Q: Why does directory listing need to be enabled?
-A: Without it, the script can’t see all files in uploads for comparison unless you find a way to do it with bruteforcing.
+A: Without it, the script can’t see all files in uploads for comparison unless you find a way to do it with brute forcing.<br>
 
-Q: Does this tool modify the website?
+Q: Does this tool modify the website?<br>
 A: No. It only reads public data and never writes or deletes anything.
 
 ---
