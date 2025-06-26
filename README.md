@@ -2,7 +2,7 @@
 
 WP-STEG is a WordPress security tool that identifies orphaned or draft media files in a WordPress instance. These are files such as images, documents, or PDFs that have been uploaded to the server but are either attached to draft posts or not attached to any published content. For example, a PDF uploaded to a draft post or a file uploaded but never referenced publicly in a post.
 
-If a WordPress site runs on a single- or two-tier architecture without any Content Delivery Network (CDN) and directory listing is enabled, one can browse the /wp-content/uploads/ directory and access media files, including those not intended for public viewing — at least for the moment. This may result in the unintentional exposure of sensitive or private content using simple logic.
+If a WordPress site runs on a web server without any Content Delivery Network (CDN) and directory listing is enabled, one can browse the /wp-content/uploads/ directory and access media files, including those not intended for public viewing — at least for the moment. This may result in the unintentional exposure of sensitive or private content using simple logic.
 
 WP-STEG operates by using the WP REST API to retrieve a list of media files that are currently linked to published posts. It then compares this list with the actual files present in the uploads directory (retrieved via directory listing). Any files found in the directory but missing from the API response are flagged as orphaned and potential leaks.
 
@@ -69,8 +69,8 @@ Options:
 Q: What are “Orphaned” files?<br>
 A: Files in /wp-content/uploads/ not attached to any published post, often forgotten or left by drafts.
 
-Q: Why does directory listing need to be enabled?
-A: Without it, the script can’t see all files in uploads for comparison unless you find a way to do it with brute forcing.<br>
+Q: Why does directory listing need to be enabled?<br>
+A: Without it, the script can’t see all files in uploads for comparison unless you find a way to do it with brute forcing.
 
 Q: Does this tool modify the website?<br>
 A: No. It only reads public data and never writes or deletes anything.
@@ -89,7 +89,7 @@ A: No. It only reads public data and never writes or deletes anything.
 
 Concept by [Smaran Chand](https://x.com/smaranchand) | [https://smaranchand.com.np](https://smaranchand.com.np)
 
-@ Rosemont 
+@Rosemont
 
 
 ---
@@ -98,6 +98,6 @@ Concept by [Smaran Chand](https://x.com/smaranchand) | [https://smaranchand.com.
 
 WP-STEG is intended solely for security testing and media audits. You must only use this tool on websites you own or have been granted explicit written permission to test.
 
-Unauthorized use of WP-STEG may violate local, national, or international laws. The developers and contributors of WP-STEG, including Author, accept no responsibility or liability for any misuse or damage caused by this tool.
+Unauthorized use of WP-STEG may violate local, national, or international laws. The developers and contributors of WP-STEG, including the Author, accept no responsibility or liability for any misuse or damage caused by this tool.
 
 Use responsibly. Always act within the bounds of applicable laws and ethical guidelines.
